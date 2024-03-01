@@ -51,6 +51,7 @@ namespace Test
             var ms = new MemoryStream();
             var bw = new BinaryWriter(ms);
 
+            bw.WriteValue(new byte[] { 1, 2, 3, 4 });
             bw.WriteValue(new SignalSet[]{
                 new SignalSet(Signal.Positive, 22.8, (1, 4)),
                 new SignalSet(Signal.Negative, 324, (-10, 10)),
@@ -59,6 +60,7 @@ namespace Test
 
             ms.Position = 0;
             var br = new BinaryReader(ms);
+            Console.WriteLine(string.Join(" ", br.ReadValue<byte[]>()));
             Console.WriteLine(string.Join("\n", br.ReadValue<IEnumerable<SignalSet>>()));
 
             Console.ReadLine();

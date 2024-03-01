@@ -72,6 +72,22 @@ namespace Binarizator
             dr_string = (ReadString, WriteString);
         #endregion
 
+        #region byte array
+        private static byte[] ReadByteArray(BinaryReader br)
+        {
+            var count = br.ReadInt32();
+            return br.ReadBytes(count);
+        }
+        private static void WriteByteArray(BinaryWriter bw, byte[] bytes)
+        {
+            bw.Write(bytes.Length);
+            bw.Write(bytes);
+        }
+        private static
+            (Func<BinaryReader, byte[]>, Action<BinaryWriter, byte[]>)
+            dr_bytearray = (ReadByteArray, WriteByteArray);
+        #endregion
+
         private static
             Dictionary<Type, (Delegate, Delegate)> delegates = new Dictionary<Type, (Delegate, Delegate)>();
 
