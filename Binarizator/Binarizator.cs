@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Binarizator
 {
-
     /// <summary>
-    /// Класс, дающий более удобный интерфейс для бинарного чтения и записи
+    /// A basic generic class for binary read-write
     /// </summary>
-    /// <typeparam name="T">Поддерживаются: все базовые числовые типы, строки, одноранговые массивы, списки, словари и последовательности. Поддерживается вложенность типов. Используйте атрибут BinarizatorAttribute для определения методов чтения и записи для пользовательских классов. Используйте BinarizatorCommon.MakeForType для того же для встроенных типов</typeparam>
     public static class Binarizator<T>
     {
         static Binarizator()
@@ -22,14 +20,14 @@ namespace Binarizator
         private static Action<BinaryWriter, T> writer;
 
         /// <summary>
-        /// Записывает значение в поток
+        /// Writes the value in stream
         /// </summary>
         public static void WriteValue(BinaryWriter bw, T value)
         {
             writer(bw, value);
         }
         /// <summary>
-        /// Записывает массив значений в поток
+        /// Writes an array in stream
         /// </summary>
         public static void WriteArray(BinaryWriter bw, T[] values)
         {
@@ -38,7 +36,7 @@ namespace Binarizator
                 writer(bw, values[i]);
         }
         /// <summary>
-        /// Записывает список значений в поток
+        /// Writes a list in stream
         /// </summary>
         public static void WriteList(BinaryWriter bw, IList<T> values)
         {
@@ -47,7 +45,7 @@ namespace Binarizator
                 writer(bw, values[i]);
         }
         /// <summary>
-        /// Записывает последовательность значений в поток
+        /// Writes an IEnumerable in stream
         /// </summary>
         public static void WriteEnumerable(BinaryWriter bw, IEnumerable<T> values)
         {
@@ -74,14 +72,14 @@ namespace Binarizator
             }
         }
         /// <summary>
-        /// Читает значение из потока
+        /// Reads value from stream
         /// </summary>
         public static T ReadValue(BinaryReader br)
         {
             return reader(br);
         }
         /// <summary>
-        /// Читает массив значений из потока
+        /// Reads array from stream
         /// </summary>
         public static T[] ReadArray(BinaryReader br)
         {
@@ -92,7 +90,7 @@ namespace Binarizator
             return ret;
         }
         /// <summary>
-        /// Читает список значений из потока
+        /// Reads list from stream
         /// </summary>
         public static List<T> ReadList(BinaryReader br)
         {
@@ -103,11 +101,11 @@ namespace Binarizator
             return ret;
         }
         /// <summary>
-        /// Читает последовательность из потока
+        /// Reads IEnumerable from stream
         /// </summary>
         public static IEnumerable<T> ReadEnumerable(BinaryReader br) => ReadEnumerable(br, br.ReadInt32());
         /// <summary>
-        /// Читает последовательность из count элементов из потока
+        /// Reads items from stream
         /// </summary>
         public static IEnumerable<T> ReadEnumerable(BinaryReader br, int count)
         {

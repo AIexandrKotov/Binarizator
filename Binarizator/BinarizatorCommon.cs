@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
-using System.Security.Policy;
 using System.Text;
 
 namespace Binarizator
@@ -92,7 +91,7 @@ namespace Binarizator
             Dictionary<Type, (Delegate, Delegate)> delegates = new Dictionary<Type, (Delegate, Delegate)>();
 
         /// <summary>
-        /// Определить методы чтения и записи для типа T
+        /// Declare reader and writer for T
         /// </summary>
         public static void MakeForType<T>(Func<BinaryReader, T> reader, Action<BinaryWriter, T> writer)
         {
@@ -100,10 +99,10 @@ namespace Binarizator
         }
 
         /// <summary>
-        /// Определить методы чтения и записи для типа type
+        /// Declare reader and writer for type
         /// </summary>
-        /// <param name="reader">Делегает типа Func&lt;BinaryReader, type></param>
-        /// <param name="writer">Делегает типа Action&lt;BinaryWriter, type></param>
+        /// <param name="reader">Delegate of type Func&lt;BinaryReader, type></param>
+        /// <param name="writer">Delegate of type Action&lt;BinaryWriter, type></param>
         public static void MakeForType(Type type, Delegate reader, Delegate writer)
         {
             delegates.Add(type, (reader, writer));

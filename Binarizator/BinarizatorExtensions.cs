@@ -8,34 +8,34 @@ namespace Binarizator
     public static class BinarizatorExtensions
     {
         /// <summary>
-        /// Записывает значение в поток
+        /// Writes the value in stream
         /// </summary>
         public static void WriteValue<T>(this BinaryWriter bw, T value) => Binarizator<T>.WriteValue(bw, value);
         /// <summary>
-        /// Читает значение из потока
+        /// Reads value from stream
         /// </summary>
         public static T ReadValue<T>(this BinaryReader br) => Binarizator<T>.ReadValue(br);
 
         /// <summary>
-        /// Записывает массив значений в поток
+        /// Writes an array in stream
         /// </summary>
         public static void WriteArray<T>(this BinaryWriter bw, T[] array) => Binarizator<T>.WriteArray(bw, array);
         /// <summary>
-        /// Читает массив значений из потока
+        /// Reads array from stream
         /// </summary>
         public static T[] ReadArray<T>(this BinaryReader br) => Binarizator<T>.ReadArray(br);
 
         /// <summary>
-        /// Записывает список значений в поток
+        /// Writes a list in stream
         /// </summary>
         public static void WriteList<T>(this BinaryWriter bw, IList<T> list) => Binarizator<T>.WriteList(bw, list);
         /// <summary>
-        /// Читает список значений из потока
+        /// Reads list from stream
         /// </summary>
         public static List<T> ReadList<T>(this BinaryReader br) => Binarizator<T>.ReadList(br);
 
         /// <summary>
-        /// Записывает словарь в поток
+        /// Writes a dictionary in stream
         /// </summary>
         public static void WriteDictionary<TKey, TValue>(this BinaryWriter bw, IDictionary<TKey, TValue> dictionary)
         {
@@ -47,7 +47,7 @@ namespace Binarizator
             }
         }
         /// <summary>
-        /// Читает словарь из потока
+        /// Reads dictionary from stream
         /// </summary>
         public static Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>(this BinaryReader br)
         {
@@ -59,27 +59,27 @@ namespace Binarizator
         }
 
         /// <summary>
-        /// Записывает последовательность элементов в поток
+        /// Writes an IEnumerable in stream
         /// </summary>
         public static void WriteEnumerable<T>(this BinaryWriter bw, IEnumerable<T> values) => Binarizator<T>.WriteEnumerable(bw, values);
         /// <summary>
-        /// Читает последовательность из count элементов из потока
+        /// Reads items from stream
         /// </summary>
         public static IEnumerable<T> ReadEnumerable<T>(this BinaryReader br, int count) => Binarizator<T>.ReadEnumerable(br, count);
         /// <summary>
-        /// Читает последовательность из потока
+        /// Reads IEnumerable from stream
         /// </summary>
         public static IEnumerable<T> ReadEnumerable<T>(this BinaryReader br) => Binarizator<T>.ReadEnumerable(br);
 
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1>(this BinaryWriter bw, ValueTuple<T1> tuple)
         {
             Binarizator<T1>.WriteValue(bw, tuple.Item1);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2>(this BinaryWriter bw, ValueTuple<T1, T2> tuple)
         {
@@ -87,7 +87,7 @@ namespace Binarizator
             Binarizator<T2>.WriteValue(bw, tuple.Item2);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3>(this BinaryWriter bw, ValueTuple<T1, T2, T3> tuple)
         {
@@ -96,7 +96,7 @@ namespace Binarizator
             Binarizator<T3>.WriteValue(bw, tuple.Item3);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3, T4>(this BinaryWriter bw, ValueTuple<T1, T2, T3, T4> tuple)
         {
@@ -106,7 +106,7 @@ namespace Binarizator
             Binarizator<T4>.WriteValue(bw, tuple.Item4);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3, T4, T5>(this BinaryWriter bw, ValueTuple<T1, T2, T3, T4, T5> tuple)
         {
@@ -117,7 +117,7 @@ namespace Binarizator
             Binarizator<T5>.WriteValue(bw, tuple.Item5);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3, T4, T5, T6>(this BinaryWriter bw, ValueTuple<T1, T2, T3, T4, T5, T6> tuple)
         {
@@ -129,7 +129,7 @@ namespace Binarizator
             Binarizator<T6>.WriteValue(bw, tuple.Item6);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3, T4, T5, T6, T7>(this BinaryWriter bw, ValueTuple<T1, T2, T3, T4, T5, T6, T7> tuple)
         {
@@ -142,7 +142,7 @@ namespace Binarizator
             Binarizator<T7>.WriteValue(bw, tuple.Item7);
         }
         /// <summary>
-        /// Записывает кортеж в поток
+        /// Writes a tuple in stream
         /// </summary>
         public static void WriteTuple<T1, T2, T3, T4, T5, T6, T7, TRest>(this BinaryWriter bw, ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> tuple) where TRest : struct
         {
@@ -155,15 +155,15 @@ namespace Binarizator
             Binarizator<T7>.WriteValue(bw, tuple.Item7);
             Binarizator<TRest>.WriteValue(bw, tuple.Rest);
         }
-        /// <summary>
-        /// Читает кортеж из потока
+        /// <summarry>
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1> ReadTuple<T1>(this BinaryReader br)
         {
             return new ValueTuple<T1>(Binarizator<T1>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2> ReadTuple<T1, T2>(this BinaryReader br)
         {
@@ -172,7 +172,7 @@ namespace Binarizator
                 Binarizator<T2>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3> ReadTuple<T1, T2, T3>(this BinaryReader br)
         {
@@ -182,7 +182,7 @@ namespace Binarizator
                 Binarizator<T3>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3, T4> ReadTuple<T1, T2, T3, T4>(this BinaryReader br)
         {
@@ -193,7 +193,7 @@ namespace Binarizator
                 Binarizator<T4>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3, T4, T5> ReadTuple<T1, T2, T3, T4, T5>(this BinaryReader br)
         {
@@ -205,7 +205,7 @@ namespace Binarizator
                 Binarizator<T5>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3, T4, T5, T6> ReadTuple<T1, T2, T3, T4, T5, T6>(this BinaryReader br)
         {
@@ -218,7 +218,7 @@ namespace Binarizator
                 Binarizator<T6>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3, T4, T5, T6, T7> ReadTuple<T1, T2, T3, T4, T5, T6, T7>(this BinaryReader br)
         {
@@ -232,7 +232,7 @@ namespace Binarizator
                 Binarizator<T7>.ReadValue(br));
         }
         /// <summary>
-        /// Читает кортеж из потока
+        /// Reads tuple from stream
         /// </summary>
         public static ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> ReadTuple<T1, T2, T3, T4, T5, T6, T7, TRest>(this BinaryReader br) where TRest: struct
         {

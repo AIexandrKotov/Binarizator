@@ -3,7 +3,7 @@
 namespace Binarizator
 {
     /// <summary>
-    /// Указывает, что данный тип может использоваться в бинаризаторе
+    /// Declares that this type can be used as T for Binarizator&lt;T>
     /// </summary>
     [System.AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false, AllowMultiple = true)]
     public sealed class BinarizatorAttribute : Attribute
@@ -11,7 +11,7 @@ namespace Binarizator
         public BinarizatorAttribute() { }
     }
     /// <summary>
-    /// Указывает на метод чтения для бинаризатора
+    /// Indicates reader method for binarizator
     /// </summary>
     [System.AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
     public sealed class BinarizatorReaderAttribute : Attribute
@@ -19,7 +19,7 @@ namespace Binarizator
         public BinarizatorReaderAttribute() { }
     }
     /// <summary>
-    /// Указывает на метод записи для бинаризатора
+    /// Indicates writer method for binarizator
     /// </summary>
     [System.AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
     public sealed class BinarizatorWriterAttribute : Attribute
